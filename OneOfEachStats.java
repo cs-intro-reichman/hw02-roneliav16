@@ -9,7 +9,10 @@ public class OneOfEachStats {
         Random generator = new Random(seed);  
 		double rnd = generator.nextDouble();
 		double countSumOfAllChildren = 0;
-		String numOfChildInEachFamily = "";
+		int family2 = 0;
+		int family3 = 0;
+		int family4 = 0;
+		char mostCommon;
 
 		for(int i = 0; i < T; i ++) {
 			char  firstChildType; // Contain the first children type (b or g)
@@ -36,24 +39,17 @@ public class OneOfEachStats {
 				countChildren++;
 			}
 			countSumOfAllChildren += countChildren; //Adds the quantity of the current family to the sum of all families.
-			numOfChildInEachFamily += countChildren;
-		}
-		int family2 = 0;
-		int family3 = 0;
-		int family4 = 0;
-		char mostCommon;
-
-		for(int i = 0; i < numOfChildInEachFamily.length(); i++ ) { // The loop check how much families have 2/3/4 or more children
-			if(numOfChildInEachFamily.charAt(i) == '2') {
+			if(countChildren == 2) {
 				family2++;
-			} else {
-				if(numOfChildInEachFamily.charAt(i) == '3') {
+			} else { 
+				if(countChildren == 3){
 					family3++;
 				} else {
-						family4++;
+					family4++;
 				}
 			}
 		}
+		
 		if((family2 >= family3) && (family2 >= family4)) { // check which of the groups is the most common
 			mostCommon = '2';
 		} else {
