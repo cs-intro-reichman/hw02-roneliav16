@@ -4,6 +4,19 @@
  */
 public class InOrder {
 	public static void main (String[] args) {
-		//// Write your code here
+		int previoustNum = (int)(Math.random() * 10); // Generates the previoust number beteen 0 to 9
+		System.out.print(previoustNum + " "); // print the previoust number
+		boolean loopBool = true; // Boolean variable that indicates the continuity of the loop
+		do{
+			int currentNum = (int)(Math.random() * 10); // Generates a new number between 0 to 9
+			if(currentNum >= previoustNum) { // check if the new number is bigger or equals to the current number
+				System.out.print(currentNum + " "); // print the new number
+				previoustNum = currentNum; 
+			} else {
+				loopBool = false;
+			}
+
+		} while(loopBool);
+	
 	}
 }
