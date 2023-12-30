@@ -12,9 +12,9 @@ public class Reverse {
 
 		System.out.println(); // print the new line 
 	 	if(wordLength % 2 == 1){ // If the string is odd print the middle char
-			System.out.print(userString.charAt(wordLength / 2));
+			System.out.println("The middle character is " + userString.charAt(wordLength / 2));
 		} else { 	// If the string is even - print the first middle char
-			System.out.print(userString.charAt((wordLength / 2) - 1));
+			System.out.println("The middle character is" + userString.charAt((wordLength / 2) - 1));
 		
 		}
 	
