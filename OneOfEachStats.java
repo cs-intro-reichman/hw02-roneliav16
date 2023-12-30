@@ -7,44 +7,26 @@ public class OneOfEachStats {
 		int seed = Integer.parseInt(args[1]);
 		// Initailizes a random numbers generator with the given seed value
         Random generator = new Random(seed);  
-		double rnd = generator.nextDouble();
-		double countSumOfAllChildren = 0;
+		int countSumOfAllChildren = 0;
 		int family2 = 0;
 		int family3 = 0;
 		int family4 = 0;
-		char mostCommon;
 
 		for(int i = 0; i < T; i ++) {
-			char  firstChildType; // Contain the first children type (b or g)
-			int countChildren = 1; // count the sum of the children.
-	
-			if(rnd < 0.5) { // Enter the first children type to a variable.
-				firstChildType = 'g';
-			} else {
-				firstChildType = 'b';
-			}
-			boolean boyAndGirl = true;
-			System.out.print(firstChildType);
+			boolean isBoy = false;
+			boolean isGirl = false;
+			int countChildren = 0; // count the sum of the children.
 
-	
-			while(boyAndGirl) { // The loop check if the next children is the same like before. If so, she continues if not ends the loop.
-				char anotherChildType;
-				rnd = generator.nextDouble();
+			while(!isBoy || !isGirl) { // The loop check if the next children is the same like before. If so, she continues if not ends the loop.
+				double rnd = generator.nextDouble();
 				if(rnd < 0.5) {
-					anotherChildType = 'g';
-					System.out.print(anotherChildType);
+					isGirl = true;
 				} else {
-					anotherChildType = 'b';
-					System.out.print(anotherChildType);
-
+					isBoy = true;
 				} 
-				if(anotherChildType != firstChildType) {
-					boyAndGirl = false;
-				}
 				countChildren++;
 			}
 			countSumOfAllChildren += countChildren; //Adds the quantity of the current family to the sum of all families.
-			System.out.println(" " + countChildren);
 			if(countChildren == 2) {
 				family2++;
 			} else { 
@@ -53,22 +35,23 @@ public class OneOfEachStats {
 				} else {
 					family4++;
 				}
-			}
+			}				
 		}
-		
-		if((family2 >= family3) && (family2 >= family4)) { // check which of the groups is the most common
-			mostCommon = '2';
-		} else {
-			if ((family3 >= family2) && family3 >= family4) {
-				mostCommon = '3';
-			} else { 
-				mostCommon = '4';
-			}
-		}
-		System.out.println("Average: " + countSumOfAllChildren / T + " children to get at least one of each gender.");
+		System.out.println("Average: " + (double)countSumOfAllChildren / T + " children to get at least one of each gender.");
 		System.out.println("Number of families with 2 children: " + family2 + ".");
 		System.out.println("Number of families with 3 children: " + family3+ ".");
 		System.out.println("Number of families with 4 or more children: " + family4);
-		System.out.println("The most common number of children is " + mostCommon + ".");
+		int max = Math.max(Math.max(family2, family3), family4);
+		int average = 0;
+		if(max == family2){
+			average = 2;
+		} else {
+			if(max == family3) {
+				average = 3;
+			} else {
+				average = 4;
+			}
+		}
+		System.out.println("The most common number of children is " + average + ".");
 	}
 }
