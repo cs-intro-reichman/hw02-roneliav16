@@ -24,14 +24,19 @@ public class OneOfEachStats {
 				firstChildType = 'b';
 			}
 			boolean boyAndGirl = true;
+			System.out.print(firstChildType);
+
 	
 			while(boyAndGirl) { // The loop check if the next children is the same like before. If so, she continues if not ends the loop.
 				char anotherChildType;
 				rnd = generator.nextDouble();
 				if(rnd < 0.5) {
 					anotherChildType = 'g';
+					System.out.print(anotherChildType);
 				} else {
 					anotherChildType = 'b';
+					System.out.print(anotherChildType);
+
 				} 
 				if(anotherChildType != firstChildType) {
 					boyAndGirl = false;
@@ -39,6 +44,7 @@ public class OneOfEachStats {
 				countChildren++;
 			}
 			countSumOfAllChildren += countChildren; //Adds the quantity of the current family to the sum of all families.
+			System.out.println(" " + countChildren);
 			if(countChildren == 2) {
 				family2++;
 			} else { 
@@ -62,7 +68,7 @@ public class OneOfEachStats {
 		System.out.println("Average: " + countSumOfAllChildren / T + " children to get at least one of each gender.");
 		System.out.println("Number of families with 2 children: " + family2 + ".");
 		System.out.println("Number of families with 3 children: " + family3+ ".");
-		System.out.println("Number of families with 4 or more children: " + family4+ ".");
+		System.out.println("Number of families with 4 or more children: " + family4);
 		System.out.println("The most common number of children is " + mostCommon + ".");
 	}
 }
