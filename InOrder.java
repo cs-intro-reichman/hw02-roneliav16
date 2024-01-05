@@ -17,6 +17,8 @@ public class InOrder {
 			}
 
 		} while(loopBool);
+		/* your solution is very good, just a remark, do-while is less widely used and not all languages support it.
+  		so next time maybe do it with a regular while if you can*/
 	
 	}
 }
